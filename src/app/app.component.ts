@@ -18,8 +18,8 @@ export class AppComponent implements OnInit  {
     wishlist =0;
   cart=0;
   
-  cartItem :any;
-
+  cartItem = new Set();
+  wishListItem = new Set();
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
     private data:  DataserviceService,){}
   
@@ -34,23 +34,26 @@ export class AppComponent implements OnInit  {
     this.data.changeMessage('LoggedOut');
   }
 
+ngDoCheck(){
+  this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
+    this.cart=this.cartItem.size;
 
+    if(this.username=='LoggedOut'){
+this.wishlist=0;
+    }
+else{
+    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
+    this.wishlist=this.wishListItem.size;
+}
+  console.log(this.cartItem , this.cart ,this.wishlist);
+//   for (let entry of this.cartItem) {
+//     console.log(entry);
+// }
+}
   ngOnInit() {
     this.data.currentMessage.subscribe(username => this.username = username)
-  //   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem)
-   
-  //   let cartList = new Set();
-  //   6
-  //   this.cart= this.cart + cartList.size;
-
-  //   for (let entry of cartList) {
-  //     console.log(entry);
-  // }
-  //   if (this.username=='username'){
-  //     this.child=false;
-
-  //  }
-  }
+    
+       }
 
 
  

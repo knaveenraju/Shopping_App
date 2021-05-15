@@ -1,10 +1,10 @@
 import { Component, OnChanges, OnInit,Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from '../service/dataservice.service';
 
 import { ImagesService } from '../service/images.service';
 
-@Component({
+@Component({ 
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
@@ -14,15 +14,18 @@ export class ProductDetailsComponent implements OnInit{
     SelectedID:any;
     price:any;
      cartList ;
-  
+  username;
   constructor(private imageService: ImagesService,    
-    private route: ActivatedRoute,private data: DataserviceService) { }    
+    private route: ActivatedRoute,private data: DataserviceService , private router:Router) { }    
  
   ngOnInit(){    
     this.details = this.imageService.getImage(    
       this.route.snapshot.params['id']    
  
     )   
+
+    this.data.currentMessage.subscribe(username => this.username = username)
+   
     this.SelectedID= this.route.snapshot.params['id'];
 
   
@@ -30,16 +33,20 @@ export class ProductDetailsComponent implements OnInit{
   }
   
   addtoCart(){
-    this.cartList = new Set();
-    console.log(this.details);
-    
-    this.cartList.add(this.details);
-   
-    // this.data.AddtoCart(this.details);
-    console.log(this.cartList);
+     
+    this.data.AddtoCart(this.details);
+
    
   }
-  wishlist(){}
+  addtoWishList(){
+    if (this.username=="LoggedOut"){
+      alert("Login to add parts to your Wishlist")
+      this.router.navigate(['/login']);
+    }
+    else{
+    this.data.AddtoWishlist(this.details);
+    }
+  }
 
 
 }
