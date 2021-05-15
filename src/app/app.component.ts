@@ -20,8 +20,9 @@ export class AppComponent implements OnInit  {
   
   cartItem = new Set();
   wishListItem = new Set();
+  wishListItemM= new Map();
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
-    private data:  DataserviceService,){}
+    private data:  DataserviceService,){} 
   
     searchValue='';
   onSearch(){
@@ -42,10 +43,11 @@ ngDoCheck(){
 this.wishlist=0;
     }
 else{
-    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
-    this.wishlist=this.wishListItem.size;
+    this.data.currentwishList.subscribe(wishListItemM => this.wishListItemM = wishListItemM);
+   // this.wishlist=this.wishListItem.size;
+  console.log(this.wishListItemM);
 }
-  console.log(this.cartItem , this.cart ,this.wishlist);
+ // console.log(this.cartItem , this.cart ,this.wishlist);
 //   for (let entry of this.cartItem) {
 //     console.log(entry);
 // }

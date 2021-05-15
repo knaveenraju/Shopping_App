@@ -1,10 +1,10 @@
 .img-container{      
     margin:13px;      
-    box-shadow: rgb(211, 31, 31) 1px 2px 8px 1px;      
+     box-shadow: rgb(83, 78, 78) 1px 2px 8px 1px;       
     min-height: 600px;      
     min-width: 800px;      
     background-position: left;      
     background-repeat: no-repeat;      
     align-content: left;  
-    background-size: 500px, 400px;    
+    background-size: 500px, 600px;    
 } 

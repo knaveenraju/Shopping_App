@@ -39,13 +39,14 @@ export class ProductDetailsComponent implements OnInit{
    
   }
   addtoWishList(){
-    if (this.username=="LoggedOut"){
-      alert("Login to add parts to your Wishlist")
-      this.router.navigate(['/login']);
-    }
-    else{
+    // if (this.username=="LoggedOut"){
+    //   alert("Login to add parts to your Wishlist")
+    //   this.router.navigate(['/login']);
+    // }
+    // else{
+    // this.data.AddtoWishlist(this.details);
+    // }
     this.data.AddtoWishlist(this.details);
-    }
   }
 
 
