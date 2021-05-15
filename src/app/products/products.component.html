@@ -1,0 +1,43 @@
+
+<div class="foot-cart1">
+<mat-card class="filter">
+ 
+Filters  
+   
+    <div class="row" style="margin-top:10px;margin-bottom: 10px;">    
+       
+      <div>    
+        <button class="buttonC" (click)="filterBy='all'">All</button>    
+      </div>    
+      <div >    
+        <button class="buttonC" (click)="filterBy='mens'">Mens</button>    
+      </div>    
+      <div >    
+        <button class="buttonC" (click)="filterBy='womens'">Womens</button>    
+      </div>    
+      <div>    
+        <button class="buttonC" (click)="filterBy='kids'">Kids</button>    
+      </div>    
+      <div >    
+        <button class="buttonC" (click)="filterBy='accessories'">Accessories</button>    
+      </div>    
+   
+    </div>   
+</mat-card>
+    
+<div >
+    <div class="row">    
+      <ul>    
+        <li *ngFor="let img of (allImages | filterimages:filterBy)">    
+          <a [routerLink]="['/image', img.id]" style="margin-right: 1.5em; margin-bottom: 1.5em;">  
+            <img src="{{img.url}}" class="img" width="240" height="170" >                 
+          </a>   
+
+            
+          <!-- <button >Wishlist</button> -->
+        </li>    
+      </ul>    
+    </div>    
+  </div>
+  
+</div>

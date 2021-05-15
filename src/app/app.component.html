@@ -1,0 +1,166 @@
+<mat-sidenav-container>
+  <mat-sidenav-content fxLayout="column">
+<div style="min-height: 100%; position: relative;">
+    <header>
+
+      <mat-toolbar class="toolbar"  >
+        <mat-toolbar-row>
+          <button mat-button [routerLink]="['home']" class="buttonC">Online Shopping</button>
+          
+         
+      
+        <button mat-button [routerLink]="['products']" class="buttonC" >Men</button>
+        <button mat-button [routerLink]="['products']" class="buttonC" >Women</button>
+        <button mat-button [routerLink]="['products']" class="buttonC" >Kids</button>
+        <button mat-button [routerLink]="['products']" class="buttonC" >Home & Living</button>
+        <button mat-button [routerLink]="['products']" class="buttonC" >Essentials</button>
+     
+        <form  [formGroup]="searchForm" > 
+        <div class="desktop-query">
+       
+          <input matInput placeholder="Search for products, brands and more" class="searchBar" />
+      
+          <a class="desktop-submit" >
+            <span class="iconSearch" >
+              <button mat-icon-button (click)="onSearch()">
+                <mat-icon>search</mat-icon>
+              </button>
+            </span>
+          </a>
+        </div>
+        </form>
+    
+          
+      <span class="example-spacer"></span>
+      <div  class="IconsContainer">
+           <span class="iconProfile"> <button mat-icon-button [matMenuTriggerFor]="animals">
+              <mat-icon>perm_identity</mat-icon>
+            </button></span>
+            <span class="userTitle">Profile</span>
+
+            <mat-menu #animals="matMenu">
+               <button *ngIf="username=='LoggedOut'; else user" mat-menu-item [routerLink]="['login']" style="width: 13em;">Login</button>
+               <ng-template #user>
+                <button mat-menu-item style="width: 13em;">{{username}}</button>
+              </ng-template>
+              <button mat-menu-item [routerLink]="['']">Wishlist</button>
+              <button mat-menu-item [routerLink]="['']">Orders</button>
+              <button mat-menu-item [routerLink]="['']">Saved Addresses</button>
+              <button *ngIf="username=='username'; else logout" mat-menu-item >Register</button>
+               <ng-template #logout>
+                <button mat-menu-item (click)="logOut()" [routerLink]="['home']">Log Out</button>
+              </ng-template>
+            </mat-menu>
+
+          </div>
+      
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      
+            <div class="IconsContainer">
+            <span class="iconWishlist"> <button mat-icon-button >
+              <div *ngIf="wishlist>0; else elseBlock" style="margin-top: 0.7em;">
+                <mat-icon  matBadge="{{wishlist}}" >bookmark</mat-icon>
+              </div>
+              <ng-template #elseBlock>
+                <mat-icon >bookmark</mat-icon>
+              </ng-template>
+             
+            </button></span>
+            <span class="userTitle">Wishlist</span>
+          </div>
+             
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                
+            <div class="IconsContainer">
+              <span class="iconCart"> <button mat-icon-button >
+              <div *ngIf="cart>0; else elseCart" style="margin-top: 0.7em;">
+                <mat-icon  matBadge="{{cart}}" >shopping_cart</mat-icon>
+              </div>
+              <ng-template #elseCart>
+                <mat-icon>shopping_cart</mat-icon>
+              </ng-template>
+                     
+            </button></span>
+            <span class="userTitle">Cart</span>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          
+            
+        
+         </mat-toolbar-row>
+        </mat-toolbar>
+        
+        </header>
+<div style="padding-top: 3em;padding-bottom: 14em; height: 100%; margin-bottom: 10px;">
+  <router-outlet></router-outlet>
+</div>
+    
+
+    
+
+<footer class="foot">
+    <div class="foot1">
+
+      <div class="appExperience">
+            
+  <div style=" float:left; width: 25%;">
+            <p style="font-weight: 500; ">
+            <a style="text-decoration: none;font-weight: 500; font-size: medium; color: black;" routerLink="/home" >Online Shopping</a>
+          </p>
+          <a style="text-decoration: none;color: black;" routerLink="/products" >Men</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/products" >Women</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/products" >kids</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/products" >Home & Livings</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/products" >Essentials</a><br/>
+
+         </div>
+          
+         <div style="  float:left;  width: 25%;">
+          <p style="font-weight: 500; font-size: medium; color: black;">
+           Useful Links
+          </p>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Contact us</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >FAQ</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >T&C</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Tearms of use</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Track Order</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Shipping</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Cancellation</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/" >Return</a><br/>
+         </div>
+
+         <div style=" float:left;  width: 25%;">
+         
+          <div >
+           <p style="font-weight: 500; font-size: medium; color: black;">
+             Experience Shopping app on Mobile
+            </p>
+              <a> <img style="margin-right: 10px; height: 42px;width: 125px;" 
+               src="assets/images/googleplay.png"> </a> <br/>
+              <a> <img style="margin-right: 10px; height: 42px;width: 125px;" 
+               src="assets/images/appStore.png"> </a>
+          </div>
+
+        </div>
+        <div style=" float:right;  width: 11%;">
+         <div>    <p style="font-weight: 500; font-size: medium; color: black;">Keep in Touch</p>
+          <a> <img style="margin-right: 10px; height: 18px;"
+           src="assets/images/facebook.png"> </a>
+         <a> <img style="margin-right: 10px; height: 18px;"
+           src="assets/images/twitter.png"> </a>
+          <a> <img style="margin-right: 10px; height: 18px;" 
+           src="assets/images/youtube.png"> </a>
+           <a> <img style="margin-right: 10px; height: 18px;" 
+             src="assets/images/insta.png"> </a>
+
+            </div> 
+            </div>
+               
+        </div>
+
+      </div>
+    </footer>
+  </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

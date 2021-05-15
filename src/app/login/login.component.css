@@ -1,0 +1,24 @@
+.example-card{
+    padding: 75px 100px 90px 100px;
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    margin-top: 75px;
+    
+    
+}
+
+  .buttonL{
+    color:black;
+    /* top: 15px;
+    height :7em; */
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+    /* background-color: rgb(236, 142, 173); */
+
+  }
+.example-full-width{
+width: 200px;
+
+}
