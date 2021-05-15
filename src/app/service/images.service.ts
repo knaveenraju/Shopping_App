@@ -25,7 +25,7 @@ const Imagesdetails = [
     { "id": 3, "type": "womens","Price":"1500", "url": "assets/images/brands/brand2.jpg" },    
     { "id": 4, "type": "womens","Price":"800", "url": "assets/images/brands/brand7.jpeg" },    
     { "id": 5, "type": "kids", "Price":"600","url": "assets/images/categories/cat10.jpg" },    
-    { "id": 6, "type": "accessories", "Price":"3000","url": "assets/images/accessories/acc1.jpg" },    
+    { "id": 6, "type": "accessories", "Price":"4000","url": "assets/images/accessories/acc1.jpg" },    
  
     
 ]   
