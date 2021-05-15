@@ -1,6 +1,6 @@
 import { Router ,ActivatedRoute} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DataserviceService } from './service/dataservice.service';
 
 
@@ -25,8 +25,9 @@ export class AppComponent implements OnInit  {
   
     searchValue='';
   onSearch(){
- this.router.navigate(['/products']);
- console.log(this.searchValue);
+    
+ this.router.navigate(['/products',this.searchValue]);
+ //console.log(this.searchValue);
   }
 
   logOut(){

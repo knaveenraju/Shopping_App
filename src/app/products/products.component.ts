@@ -19,9 +19,14 @@ export class ProductsComponent implements OnChanges,OnInit{
   ngOnChanges() {    
     this.allImages = this.imageService.getImages();    
   }   
+ 
+  ngDoCheck(){
+    this.filterBy=this.route.snapshot.paramMap.get('category');
+    //console.log(this.filterBy +"docheck");
+  }
   
   ngOnInit(): void {
-    // this.route.queryParams.subscribe(params=>{this.filterBy=params['cat']});
+    //    this.filterBy=this.route.snapshot.paramMap.get('category');
     // console.log(this.filterBy);
   }
 } 

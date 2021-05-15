@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'home/:username', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'image/:id', component: ProductDetailsComponent },
-  { path: 'products/:cat', component: ProductsComponent },
+  { path: 'products/:category', component: ProductsComponent },
   { path: 'products', component: ProductsComponent },
   { path: '', component: HomeComponent },
 
