@@ -15,11 +15,12 @@
         <button mat-button [routerLink]="['products']" class="buttonC" >Home & Living</button>
         <button mat-button [routerLink]="['products']" class="buttonC" >Essentials</button>
      
-        <form  [formGroup]="searchForm" > 
+
         <div class="desktop-query">
        
-          <input matInput placeholder="Search for products, brands and more" class="searchBar" />
-      
+          <input matInput placeholder="Search for products, brands and more" class="searchBar" 
+          (keydown.enter)='onSearch()' [(ngModel)]='searchValue'/>
+  
           <a class="desktop-submit" >
             <span class="iconSearch" >
               <button mat-icon-button (click)="onSearch()">
@@ -28,7 +29,9 @@
             </span>
           </a>
         </div>
-        </form>
+   
+     
+    
     
           
       <span class="example-spacer"></span>
