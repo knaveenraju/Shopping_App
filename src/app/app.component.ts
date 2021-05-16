@@ -22,7 +22,7 @@ export class AppComponent implements OnInit  {
   wishListItem = new Map();
  
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
-    private data:  DataserviceService,){} 
+    private data:  DataserviceService){} 
   
     searchValue='';
   onSearch(){
@@ -36,9 +36,10 @@ export class AppComponent implements OnInit  {
   }
 
 ngDoCheck(){
+  
   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
     this.cart=this.cartItem.size;
-console.log(this.cartItem)
+
 
 
     if(this.username=='LoggedOut'){
@@ -47,6 +48,7 @@ this.wishlist=0;
 else{
   this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
   this.wishlist=this.wishListItem.size;
+  console.log(this.wishListItem)
 
 }
 }

@@ -60,7 +60,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       
             <div class="IconsContainer">
-            <span class="iconWishlist"> <button mat-icon-button >
+            <span class="iconWishlist"> <button mat-icon-button [routerLink]="['/wishlist']" >
               <div *ngIf="wishlist>0; else elseBlock" style="margin-top: 0.7em;">
                 <mat-icon  matBadge="{{wishlist}}" >bookmark</mat-icon>
               </div>
@@ -75,7 +75,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 
             <div class="IconsContainer">
-              <span class="iconCart"> <button mat-icon-button >
+              <span class="iconCart"> <button mat-icon-button [routerLink]="['/cart']">
               <div *ngIf="cart>0; else elseCart" style="margin-top: 0.7em;">
                 <mat-icon  matBadge="{{cart}}" >shopping_cart</mat-icon>
               </div>

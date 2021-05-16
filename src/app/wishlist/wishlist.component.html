@@ -1,1 +1,17 @@
-<p>wishlist works!</p>
+<mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
+ 
+    <div *ngFor="let wishlist of wishListItem | keyvalue">
+       <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
+      
+            <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >     
+         
+        
+         <button (click)="remove(wishlist.key)" >Remove</button>
+         <button (click)="moveTocart(wishlist.key)">Move to Cart</button>
+        
+    </div>
+    
+    </div>
+    
+    </mat-card>
+    

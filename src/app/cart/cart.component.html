@@ -1,1 +1,16 @@
-<p>cart works!</p>
+<mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
+ 
+<div *ngFor="let cart of cartItem | keyvalue">
+   <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
+  
+        <img src=" {{cart.key.url}}" class="img" width="150" height="90" >     
+     
+     Quantity <input type="text"  value="{{cart.value}}"  /> 
+     <button (click)="remove(cart.key)" >Remove</button>
+     <button (click)="moveToWishlist(cart.key)">Move to Wishlist</button>
+    
+</div>
+
+</div>
+
+</mat-card>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataserviceService } from '../service/dataservice.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +9,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  username;
+  cartItem = new Map();
+  wishListItem = new Map();
+  
+  constructor( private data : DataserviceService, private router : Router){}
 
-  ngOnInit(): void {
+remove(item:any){
+  if(this.cartItem.has(item)){
+    this.cartItem.delete(item);
   }
 
+}
+
+moveToWishlist(item:any){
+  console.log(item);
+  if (this.username=="LoggedOut"){
+    alert("Login to add parts to your Wishlist")
+    this.router.navigate(['/login']);
+  }
+  else{
+    this.data.AddtoWishlist(item);
+    this.cartItem.delete(item); 
+  }
+}
+
+
+updateQuantity(item:any ,num:any){
+console.log(num)
+
+}
+
+  ngOnInit(): void {
+    this.data.currentMessage.subscribe(username => this.username=username)
+    this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
+    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
+    
+  //  console.log(this.cartItem)
+    
+  
+}
 }
