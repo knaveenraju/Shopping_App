@@ -39,19 +39,7 @@ export class ProductDetailsComponent implements OnInit{
     console.log(this.cartList);
    
   }
-<<<<<<< HEAD
-  addtoWishList(){
-    if (this.username=="LoggedOut"){
-      alert("Login to add parts to your Wishlist")
-      this.router.navigate(['/login']);
-    }
-    else{
-    this.data.AddtoWishlist(this.details);
-    }
-  }
-=======
   wishlist(){}
->>>>>>> parent of 1add896 (online shopping update 2)
 
 
 }
