@@ -18,16 +18,12 @@ export class AppComponent implements OnInit  {
     wishlist =0;
   cart=0;
   
-<<<<<<< HEAD
-  cartItem = new Set();
-  wishListItem = new Set();
-  wishListItemM= new Map();
-=======
   cartItem :any;
 
->>>>>>> parent of 1add896 (online shopping update 2)
+
+
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
-    private data:  DataserviceService,){} 
+    private data:  DataserviceService,){}
   
     searchValue='';
   onSearch(){
@@ -41,22 +37,6 @@ export class AppComponent implements OnInit  {
   }
 
 
-<<<<<<< HEAD
-    if(this.username=='LoggedOut'){
-this.wishlist=0;
-    }
-else{
-    this.data.currentwishList.subscribe(wishListItemM => this.wishListItemM = wishListItemM);
-   // this.wishlist=this.wishListItem.size;
-  console.log(this.wishListItemM);
-}
- // console.log(this.cartItem , this.cart ,this.wishlist);
-//   for (let entry of this.cartItem) {
-//     console.log(entry);
-// }
-}
-=======
->>>>>>> parent of 1add896 (online shopping update 2)
   ngOnInit() {
     this.data.currentMessage.subscribe(username => this.username = username)
   //   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem)
