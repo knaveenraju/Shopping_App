@@ -18,9 +18,9 @@ export class AppComponent implements OnInit  {
     wishlist =0;
   cart=0;
 
-  cartItem = new Set();
-  wishListItem = new Set();
-  wishListItemM= new Map();
+  cartItem = new Map();
+  wishListItem = new Map();
+ 
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
     private data:  DataserviceService,){} 
   
@@ -38,6 +38,7 @@ export class AppComponent implements OnInit  {
 ngDoCheck(){
   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
     this.cart=this.cartItem.size;
+console.log(this.cartItem)
 
 
     if(this.username=='LoggedOut'){
@@ -53,6 +54,7 @@ else{
     this.data.currentMessage.subscribe(username => this.username = username)
   }
  
+  
 
 }
  

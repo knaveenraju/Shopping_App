@@ -13,13 +13,16 @@ export class ProductDetailsComponent implements OnInit{
   details:any    
     SelectedID:any;
     price:any;
-     cartList = new Set();
+     cartList = new Map();
      username;
-     wishList = new Set();
+     wishList = new Map();
   
+     @Output() messageEvent = new EventEmitter<any>();
   constructor(private imageService: ImagesService,    
     private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
  
+
+  
   ngOnInit(){    
     this.details = this.imageService.getImage(    
       this.route.snapshot.params['id']    
@@ -35,14 +38,13 @@ export class ProductDetailsComponent implements OnInit{
   
     //console.log(this.details);
     
-    this.cartList.add(this.details);
-   
+   this.cartList.set(this.details,1);
     this.data.AddtoCart(this.details);
    
    
   }
 
-  wishlist(){}
+ 
 
   addtoWishList(){
     if (this.username=="LoggedOut"){
@@ -50,7 +52,7 @@ export class ProductDetailsComponent implements OnInit{
       this.router.navigate(['/login']);
     }
     else{
-      this.wishList.add(this.details);
+    
     this.data.AddtoWishlist(this.details);
     }
   }
