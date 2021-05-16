@@ -39,7 +39,19 @@ export class ProductDetailsComponent implements OnInit{
     console.log(this.cartList);
    
   }
+<<<<<<< HEAD
   wishlist(){}
+=======
+  addtoWishList(){
+    if (this.username=="LoggedOut"){
+      alert("Login to add parts to your Wishlist")
+      this.router.navigate(['/login']);
+    }
+    else{
+    this.data.AddtoWishlist(this.details);
+    }
+  }
+>>>>>>> parent of 7999ee5 (Online Shopping update 3)
 
 
 }

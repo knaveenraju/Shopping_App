@@ -18,10 +18,15 @@ export class AppComponent implements OnInit  {
     wishlist =0;
   cart=0;
   
+<<<<<<< HEAD
   cartItem :any;
 
 
 
+=======
+  cartItem = new Set();
+  wishListItem = new Set();
+>>>>>>> parent of 7999ee5 (Online Shopping update 3)
   constructor(private formBuilder: FormBuilder,private route :ActivatedRoute , private router: Router,
     private data:  DataserviceService,){}
   
@@ -37,6 +42,21 @@ export class AppComponent implements OnInit  {
   }
 
 
+<<<<<<< HEAD
+=======
+    if(this.username=='LoggedOut'){
+this.wishlist=0;
+    }
+else{
+    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
+    this.wishlist=this.wishListItem.size;
+}
+  console.log(this.cartItem , this.cart ,this.wishlist);
+//   for (let entry of this.cartItem) {
+//     console.log(entry);
+// }
+}
+>>>>>>> parent of 7999ee5 (Online Shopping update 3)
   ngOnInit() {
     this.data.currentMessage.subscribe(username => this.username = username)
   //   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem)
