@@ -49,7 +49,7 @@
               <button mat-menu-item [routerLink]="['']">Wishlist</button>
               <button mat-menu-item [routerLink]="['']">Orders</button>
               <button mat-menu-item [routerLink]="['']">Saved Addresses</button>
-              <button *ngIf="username=='username'; else logout" mat-menu-item >Register</button>
+              <button *ngIf="username=='LoggedOut'; else logout" mat-menu-item >Register</button>
                <ng-template #logout>
                 <button mat-menu-item (click)="logOut()" [routerLink]="['home']">Log Out</button>
               </ng-template>

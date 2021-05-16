@@ -13,8 +13,9 @@ export class ProductDetailsComponent implements OnInit{
   details:any    
     SelectedID:any;
     price:any;
-     cartList ;
+     cartList = new Set();
      username;
+     wishList = new Set();
   
   constructor(private imageService: ImagesService,    
     private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
@@ -26,18 +27,18 @@ export class ProductDetailsComponent implements OnInit{
     )   
     this.SelectedID= this.route.snapshot.params['id'];
 
-  
+    this.data.currentMessage.subscribe(username => this.username = username)
   
   }
   
   addtoCart(){
-    this.cartList = new Set();
-    console.log(this.details);
+  
+    //console.log(this.details);
     
     this.cartList.add(this.details);
    
-    // this.data.AddtoCart(this.details);
-    console.log(this.cartList);
+    this.data.AddtoCart(this.details);
+   
    
   }
 
@@ -49,9 +50,11 @@ export class ProductDetailsComponent implements OnInit{
       this.router.navigate(['/login']);
     }
     else{
+      this.wishList.add(this.details);
     this.data.AddtoWishlist(this.details);
     }
   }
+  
 
 
 

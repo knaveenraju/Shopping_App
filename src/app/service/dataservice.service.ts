@@ -25,15 +25,16 @@ export class DataserviceService {
   AddtoCart(cartitem:any){
    
     this.cartList.add(cartitem);
-    this.cartItem.next(cartitem);
+
     this.cartItem.next(this.cartList);
+    //console.log(this.cartList)
      
   }
 
   AddtoWishlist(wishListItem:any){
    
     this.wishList.add(wishListItem);
-    this.wishListItem.next(wishListItem);
+    
     this.wishListItem.next(this.wishList);
      
   }

@@ -44,27 +44,14 @@ ngDoCheck(){
 this.wishlist=0;
     }
 else{
+  this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
+  this.wishlist=this.wishListItem.size;
 
 }
 }
  ngOnInit() {
     this.data.currentMessage.subscribe(username => this.username = username)
-  //   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem)
-   
-  //   let cartList = new Set();
-  //   6
-  //   this.cart= this.cart + cartList.size;
-
-  //   for (let entry of cartList) {
-  //     console.log(entry);
-  // }
-  //   if (this.username=='username'){
-  //     this.child=false;
-    
-   //    }
-
-
- }
+  }
  
 
 }
