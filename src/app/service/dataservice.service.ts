@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class DataserviceService {
+<<<<<<< HEAD
    cartList =new Set();
   // wishList =new Set();
    wishListM = new Map();
@@ -18,15 +19,24 @@ export class DataserviceService {
 
   private wishListItemM = new BehaviorSubject(this.wishListM);
   currentwishList = this.wishListItemM.asObservable(); 
+=======
+
+  private messageSource = new BehaviorSubject('LoggedOut');
+  currentMessage = this.messageSource.asObservable();
+ 
+  // private cartItem = new BehaviorSubject('ss');
+  // currentItem = this.cartItem.asObservable(); 
+>>>>>>> parent of 1add896 (online shopping update 2)
 
   constructor() {  }
 
   changeMessage(username: string) {
-    this.messageSource.next(username) 
+    this.messageSource.next(username)
   }
 
-  AddtoCart(cartitem:any){
+  // AddtoCart(cartitem:any){
    
+<<<<<<< HEAD
     this.cartList.add(cartitem);
        this.cartItem.next(this.cartList);
      
@@ -50,4 +60,10 @@ export class DataserviceService {
     // this.wishListItem.next(this.wishList);
      
   }}
+=======
+  //   this.cartItem.next(cartitem);
+   
+  
+  // }
+>>>>>>> parent of 1add896 (online shopping update 2)
 

@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductsComponent implements OnChanges,OnInit{
 
   images:any[];    
-  filterBy ;
+  filterBy?: string = 'all'    
  allImages:any[] = [];  
 
    constructor(private imageService: ImagesService,  private route :ActivatedRoute , private router :Router) {    
@@ -21,13 +21,11 @@ export class ProductsComponent implements OnChanges,OnInit{
   }   
  
   ngDoCheck(){
-    this.filterBy='all'
     this.filterBy=this.route.snapshot.paramMap.get('category');
     //console.log(this.filterBy +"docheck");
   }
   
   ngOnInit(): void {
-    this.filterBy='all'
     //    this.filterBy=this.route.snapshot.paramMap.get('category');
     // console.log(this.filterBy);
   }

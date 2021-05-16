@@ -1,10 +1,10 @@
 import { Component, OnChanges, OnInit,Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DataserviceService } from '../service/dataservice.service';
 
 import { ImagesService } from '../service/images.service';
 
-@Component({ 
+@Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
@@ -14,18 +14,15 @@ export class ProductDetailsComponent implements OnInit{
     SelectedID:any;
     price:any;
      cartList ;
-  username;
+  
   constructor(private imageService: ImagesService,    
-    private route: ActivatedRoute,private data: DataserviceService , private router:Router) { }    
+    private route: ActivatedRoute,private data: DataserviceService) { }    
  
   ngOnInit(){    
     this.details = this.imageService.getImage(    
       this.route.snapshot.params['id']    
  
     )   
-
-    this.data.currentMessage.subscribe(username => this.username = username)
-   
     this.SelectedID= this.route.snapshot.params['id'];
 
   
@@ -33,11 +30,16 @@ export class ProductDetailsComponent implements OnInit{
   }
   
   addtoCart(){
-     
-    this.data.AddtoCart(this.details);
-
+    this.cartList = new Set();
+    console.log(this.details);
+    
+    this.cartList.add(this.details);
+   
+    // this.data.AddtoCart(this.details);
+    console.log(this.cartList);
    
   }
+<<<<<<< HEAD
   addtoWishList(){
     // if (this.username=="LoggedOut"){
     //   alert("Login to add parts to your Wishlist")
@@ -48,6 +50,9 @@ export class ProductDetailsComponent implements OnInit{
     // }
     this.data.AddtoWishlist(this.details);
   }
+=======
+  wishlist(){}
+>>>>>>> parent of 1add896 (online shopping update 2)
 
 
 }
