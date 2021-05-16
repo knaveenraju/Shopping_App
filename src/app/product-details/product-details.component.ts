@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit,Output, EventEmitter } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from '../service/dataservice.service';
 
 import { ImagesService } from '../service/images.service';
@@ -14,9 +14,10 @@ export class ProductDetailsComponent implements OnInit{
     SelectedID:any;
     price:any;
      cartList ;
+     username;
   
   constructor(private imageService: ImagesService,    
-    private route: ActivatedRoute,private data: DataserviceService) { }    
+    private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
  
   ngOnInit(){    
     this.details = this.imageService.getImage(    
@@ -39,9 +40,9 @@ export class ProductDetailsComponent implements OnInit{
     console.log(this.cartList);
    
   }
-<<<<<<< HEAD
+
   wishlist(){}
-=======
+
   addtoWishList(){
     if (this.username=="LoggedOut"){
       alert("Login to add parts to your Wishlist")
@@ -51,7 +52,7 @@ export class ProductDetailsComponent implements OnInit{
     this.data.AddtoWishlist(this.details);
     }
   }
->>>>>>> parent of 7999ee5 (Online Shopping update 3)
+
 
 
 }
