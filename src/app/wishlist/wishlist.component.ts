@@ -9,13 +9,25 @@ import { DataserviceService } from '../service/dataservice.service';
 export class WishlistComponent implements OnInit {
    username;
    wishListItem = new Map();
+   isWishlistEmpty=true;
   constructor(private data : DataserviceService) { }
+
+  ngDoCheck(){
+ 
+    if(this.wishListItem.size==0){
+      this.isWishlistEmpty=true;
+    }
+    else{
+      this.isWishlistEmpty=false;
+    }
+   
+  }
 
   ngOnInit(): void {
 
     this.data.currentMessage.subscribe(username => this.username=username)
     this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
-   console.log(this.wishListItem)
+  
   }
 
   remove(item:any){

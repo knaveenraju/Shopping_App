@@ -1,3 +1,4 @@
+import { DataserviceService } from './../service/dataservice.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,10 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor( private route :ActivatedRoute , private router :Router) { }
+  constructor( private route :ActivatedRoute , private router :Router,private data :DataserviceService) { }
   name:String;
     ngOnInit(): void {
-      this.route.queryParams.subscribe(params=>{this.name=params['username']});
+      this.data.currentMessage;
+     
     }
   
   }

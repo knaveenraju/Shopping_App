@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
    if(this.username == 'naveen' && this.password == 'raju'){
      // this.router.navigate(['/home',this.username]);
      this.data.changeMessage(this.username);
-      this.router.navigate(['/home'] ,{queryParams : {username:this.username}});
+     // this.router.navigate(['/home'] ,{queryParams : {username:this.username}});
+      this.router.navigate(['/home']);
     }
     else {
       alert("Invalid credentials"); 

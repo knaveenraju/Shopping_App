@@ -1,5 +1,13 @@
 <mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
  
+   <div *ngIf="isWishlistEmpty; else showElse" style="text-align: center;"> 
+      <h3>
+      Your wishlist is empty!!!
+   </h3> 
+   <h3><a [routerLink]="['/home']">Keep adding your liked products</a> </h3>
+   </div>
+   <ng-template #showElse>
+
     <div *ngFor="let wishlist of wishListItem | keyvalue">
        <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
       
@@ -12,6 +20,6 @@
     </div>
     
     </div>
-    
+   </ng-template>
     </mat-card>
     

@@ -10,6 +10,7 @@ import { DataserviceService } from '../service/dataservice.service';
 export class CartComponent implements OnInit {
 
   username;
+  isCartEmpty=true;
   cartItem = new Map();
   wishListItem = new Map();
   
@@ -40,6 +41,17 @@ console.log(num)
 
 }
 
+ngDoCheck(){
+ 
+  if(this.cartItem.size==0){
+    this.isCartEmpty=true;
+  }
+  else{
+    this.isCartEmpty=false;
+  }
+ 
+}
+
   ngOnInit(): void {
     this.data.currentMessage.subscribe(username => this.username=username)
     this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
@@ -47,6 +59,5 @@ console.log(num)
     
   //  console.log(this.cartItem)
     
-  
 }
 }

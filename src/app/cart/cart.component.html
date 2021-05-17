@@ -1,16 +1,25 @@
 <mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
  
+   <div *ngIf="isCartEmpty; else showElse" style="text-align: center;"> 
+      <h3>
+      Your Cart is empty!!!
+   </h3> 
+   <h3><a [routerLink]="['/home']">Continue your shopping</a> </h3>
+   </div>
+   <ng-template #showElse>
 <div *ngFor="let cart of cartItem | keyvalue">
    <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
   
         <img src=" {{cart.key.url}}" class="img" width="150" height="90" >     
      
-     Quantity <input type="text"  value="{{cart.value}}"  /> 
+     Quantity <input type="text"   value="{{cart.value}}"  /> 
      <button (click)="remove(cart.key)" >Remove</button>
      <button (click)="moveToWishlist(cart.key)">Move to Wishlist</button>
     
 </div>
 
+
 </div>
+</ng-template>
 
 </mat-card>
