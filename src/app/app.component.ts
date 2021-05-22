@@ -36,12 +36,11 @@ export class AppComponent implements OnInit  {
   }
 
 ngDoCheck(){
-  
   this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
     this.cart=this.cartItem.size;
 
 
-
+    
     if(this.username=='LoggedOut'){
 this.wishlist=0;
     }

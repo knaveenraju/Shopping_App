@@ -11,12 +11,15 @@
     <div *ngFor="let wishlist of wishListItem | keyvalue">
        <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
       
-            <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >     
-         
+            <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >   
+            <br>  
         
-         <button (click)="remove(wishlist.key)" >Remove</button>
+         Price : {{wishlist.key.Price}}
+         <br>
+        <div>
+         <button (click)="remove(wishlist.key)" >Remove</button> &nbsp;
          <button (click)="moveTocart(wishlist.key)">Move to Cart</button>
-        
+      </div>
     </div>
     
     </div>

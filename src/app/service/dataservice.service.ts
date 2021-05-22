@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class DataserviceService {
    cartList =new Map();
    wishList =new Map();
+   cartCount : any;
   private messageSource = new BehaviorSubject('LoggedOut');
   currentMessage = this.messageSource.asObservable();
  
@@ -25,7 +26,10 @@ export class DataserviceService {
   AddtoCart(cartitem:any){
    
     this.cartList.set(cartitem,1);
-
+    for (let value of this.cartList.values()) {
+      this.cartCount=value;
+  }
+ 
     this.cartItem.next(this.cartList);
     //console.log(this.cartList)
      
@@ -34,6 +38,7 @@ export class DataserviceService {
   AddtoWishlist(wishListItem:any){
    
     this.wishList.set(wishListItem,1);
+   
     
     this.wishListItem.next(this.wishList);
      
