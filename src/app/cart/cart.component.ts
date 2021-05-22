@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { DataserviceService } from '../service/dataservice.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class CartComponent implements OnInit {
   isCartEmpty=true;
   cartItem = new Map();
   wishListItem = new Map();
-  
+  count:any;
   constructor( private data : DataserviceService, private router : Router){}
 
 remove(item:any){
@@ -21,6 +22,21 @@ remove(item:any){
     this.cartItem.delete(item);
   }
 
+}
+
+add(item:any){
+  this.count=this.cartItem.get(item);
+  this.cartItem.set(item,this.count+1)
+}
+
+sub(item:any){
+  this.count=this.cartItem.get(item);
+  if(this.count-1==0){
+    this.cartItem.delete(item)
+  }
+  else{
+  this.cartItem.set(item,this.count-1)
+}
 }
 
 moveToWishlist(item:any){

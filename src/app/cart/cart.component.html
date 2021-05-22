@@ -9,13 +9,26 @@
    <ng-template #showElse>
 <div *ngFor="let cart of cartItem | keyvalue">
    <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
-  
-        <img src=" {{cart.key.url}}" class="img" width="150" height="90" >     
-     
-     Quantity <input type="text"   value="{{cart.value}}"  /> 
+  <div>
+        <img src=" {{cart.key.url}}" class="img" width="150" height="90" >    <br>
+
+     &nbsp;  &nbsp;  Price :{{cart.value *cart.key.Price}}
+      </div>
+      <div>
+        <span  >
+         <button mat-icon-button (click)="sub(cart.key)">
+           <mat-icon>remove_circle_outline</mat-icon>
+         </button>
+       </span>
+      Qty: {{cart.value}}
+     <span >
+      <button mat-icon-button (click)="add(cart.key)">
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </span>
      <button (click)="remove(cart.key)" >Remove</button>
      <button (click)="moveToWishlist(cart.key)">Move to Wishlist</button>
-    
+    </div>
 </div>
 
 

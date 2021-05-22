@@ -11,7 +11,7 @@ import { DataserviceService } from '../service/dataservice.service';
 export class LoginComponent implements OnInit {
   loginForm : FormGroup;
   username:string;
-   password:string;
+   password:string; 
 
   
 
