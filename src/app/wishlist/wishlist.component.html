@@ -1,5 +1,5 @@
 
- 
+ <div>
       <div *ngIf="isWishlistEmpty; else showElse" style="text-align: center;"> 
          <mat-card style="margin: auto;margin: 4em; padding: 4em;">
          <h3>
@@ -12,7 +12,7 @@
 
       <ng-template #showElse>
    <div style="padding-bottom: 12em;">
-      <div style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
+      <mat-card style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
   
       <div style="float: left;"> 
          <div *ngIf="items==1; else elseItem"> My Wishlist({{items}} Item)</div>
@@ -21,14 +21,15 @@
          </ng-template>
      
        </div>
-      </div>
+      </mat-card>
+      
        <div *ngFor="let wishlist of wishListItem | keyvalue" style="margin-bottom: 3em;">
          <mat-card style="margin-bottom: 1em;width: 500px; height: 150px; float: left; margin-left: 10em;padding-bottom: 3em;">
           <div >
-         
+            <a [routerLink]="['/image', wishlist.key.id]">
                <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >      
             
-           
+            </a>
           &nbsp;&nbsp; <p style="margin-top: 0.5em;"> Price : {{wishlist.key.Price}}</p>
             
            <div style="margin-top: 0.4em;">
@@ -40,5 +41,7 @@
        </div>
        </div>
       </ng-template>
+
+   </div>
     
        

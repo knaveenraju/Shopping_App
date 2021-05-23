@@ -30,8 +30,9 @@
     <mat-card style="margin-bottom: 2em;width: 500px; height: 150px;  margin-left: 10em;padding-bottom: 3em;">
      <div style="padding-bottom: 3em;">
     <div>
+      <a [routerLink]="['/image', cart.key.id]">
           <img src=" {{cart.key.url}}" class="img" width="150" height="90" >    <br>
-  
+        </a>
        &nbsp;  &nbsp;  Price :{{cart.value *cart.key.Price}}   &nbsp;  &nbsp; 
        <span  >
         <button mat-icon-button (click)="sub(cart.key)">
