@@ -13,6 +13,7 @@ export class WishlistComponent implements OnInit  {
   cartDetails=[];
    isWishlistEmpty=true;
    wishDetails=[];
+   items=0;
   constructor(private data : DataserviceService) { }
 
   ngDoCheck(){
@@ -23,6 +24,9 @@ export class WishlistComponent implements OnInit  {
     else{
       this.isWishlistEmpty=false;
     }
+
+    
+    this.items=this.wishDetails[1];
    
   }
 

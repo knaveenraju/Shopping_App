@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
   wishDetails=[];
   count:any;
   totalAmount=0;
+  items=0;
   constructor( private data : DataserviceService, private router : Router){}
 
 remove(item:any){
@@ -70,6 +71,7 @@ moveToWishlist(item:any){
 ngDoCheck(){
   this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
   this.cartItem=this.cartDetails[0];
+  this.items=this.cartDetails[1];
   this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
   this.wishListItem=this.wishDetails[0];
   
@@ -80,10 +82,8 @@ ngDoCheck(){
     this.isCartEmpty=false;
   }
 
-  for (let entry of this.cartItem.entries()) {
-    this.totalAmount=this.totalAmount+entry[0].Price*entry[1];
-      console.log(this.totalAmount);
-}
+  this.totalAmount=this.data.getTotalAmount(this.cartItem);
+  console.log(this.totalAmount)
  
 }
 

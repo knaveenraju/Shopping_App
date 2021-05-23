@@ -1,38 +1,81 @@
-<mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
- 
-   <div *ngIf="isCartEmpty; else showElse" style="text-align: center;"> 
-      <h3>
-      Your Cart is empty!!!
-   </h3> 
-   <h3><a [routerLink]="['/home']">Continue your shopping</a> </h3>
-   </div>
-   <ng-template #showElse>
-<div *ngFor="let cart of cartItem | keyvalue">
-   <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
-  <div>
-        <img src=" {{cart.key.url}}" class="img" width="150" height="90" >    <br>
 
-     &nbsp;  &nbsp;  Price :{{cart.value *cart.key.Price}}
-      </div>
-      <div>
-        <span  >
-         <button mat-icon-button (click)="sub(cart.key)">
-           <mat-icon>remove_circle_outline</mat-icon>
-         </button>
-       </span>
-      Qty: {{cart.value}}
-     <span >
-      <button mat-icon-button (click)="add(cart.key)">
-        <mat-icon>add_circle_outline</mat-icon>
-      </button>
-    </span>
-     <button (click)="remove(cart.key)" >Remove</button> &nbsp;
-     <button (click)="moveToWishlist(cart.key)">Move to Wishlist</button>
-    </div>
-</div>
+<div >
 
-
-</div>
-</ng-template>
-
+<div *ngIf="isCartEmpty; else showElse" style="text-align: center;"> 
+  <mat-card style="margin: auto;margin-top: 4em; padding: 4em;">
+    <h3>
+    Your Cart is empty!!!
+ </h3> 
+ <h3><a [routerLink]="['/home']">Continue your shopping</a> </h3>
 </mat-card>
+ </div>
+
+
+ 
+<ng-template #showElse>
+  <div style="padding-bottom: 12em;">
+
+    <mat-card style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
+    <div style="float: left;"> 
+      <div *ngIf="items==1; else elseItem"> My Shopping Bag({{items}} Item)</div>
+      <ng-template #elseItem>
+        <div > My Shopping Bag({{items}} Items)</div>
+      </ng-template>
+    
+    </div>
+    <div style="float: right;">Total:{{totalAmount+100}}</div>
+    </mat-card>
+
+  <div *ngFor="let cart of cartItem | keyvalue" style="float: left;">
+    <mat-card style="margin-bottom: 2em;width: 500px; height: 150px;  margin-left: 10em;padding-bottom: 3em;">
+     <div style="padding-bottom: 3em;">
+    <div>
+          <img src=" {{cart.key.url}}" class="img" width="150" height="90" >    <br>
+  
+       &nbsp;  &nbsp;  Price :{{cart.value *cart.key.Price}}   &nbsp;  &nbsp; 
+       <span  >
+        <button mat-icon-button (click)="sub(cart.key)">
+          <mat-icon>remove_circle_outline</mat-icon>
+        </button>
+      </span>
+     Qty: {{cart.value}}
+    <span >
+     <button mat-icon-button (click)="add(cart.key)">
+       <mat-icon>add_circle_outline</mat-icon>
+     </button>
+   </span>
+        </div>
+        <div>
+         
+      <button mat-raised-button class="buttonL" (click)="remove(cart.key)" >Remove</button> &nbsp;
+      <button mat-raised-button class="buttonL"(click)="moveToWishlist(cart.key)">Move to Wishlist</button>
+      </div>
+     </div>
+      </mat-card>
+  </div>
+  
+
+<div style="float: right;">
+  <mat-card style=" margin-right: 15em; padding-left:5em;padding-right: 5em; padding-top: 5em; padding-bottom: 2em;">
+    <tr>
+      <td>Amount</td>&nbsp;&nbsp;
+      <td>{{totalAmount}}</td>
+    </tr>
+    <tr>
+      <td>Shipping Charges</td>&nbsp;&nbsp;
+      <td>100</td>
+    </tr>
+  
+    <tr>
+  
+      <td>Total Amount</td>&nbsp;&nbsp;
+      <td>{{totalAmount+100}}</td>
+    </tr>
+    <button mat-raised-button class="buttonL">Place Order</button>
+  </mat-card>
+    </div>
+ 
+  </div>
+  </ng-template>
+
+</div>

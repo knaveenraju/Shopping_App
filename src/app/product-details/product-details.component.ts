@@ -59,7 +59,7 @@ else{
     else{
 
     if(this.wishList.has(this.details)){
-      alert("This product already added to your cart")
+      alert("This product already added to your wishlist")
 }
 else{
  this.wishList.set(this.details,1);  

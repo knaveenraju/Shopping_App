@@ -1,28 +1,44 @@
-<mat-card style="margin-top: 2em; margin-bottom: 2em; padding-top: 3em; padding-bottom: 3em; margin: auto;">
- 
-   <div *ngIf="isWishlistEmpty; else showElse" style="text-align: center;"> 
-      <h3>
-      Your wishlist is empty!!!
-   </h3> 
-   <h3><a [routerLink]="['/home']">Keep adding your liked products</a> </h3>
-   </div>
-   <ng-template #showElse>
 
-    <div *ngFor="let wishlist of wishListItem | keyvalue">
-       <div style="margin-right: 1.5em; margin-bottom: 1.5em;">
-      
-            <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >   
-            <br>  
-        
-         Price : {{wishlist.key.Price}}
-         <br>
-        <div>
-         <button (click)="remove(wishlist.key)" >Remove</button> &nbsp;
-         <button (click)="moveTocart(wishlist.key)">Move to Cart</button>
+ 
+      <div *ngIf="isWishlistEmpty; else showElse" style="text-align: center;"> 
+         <mat-card style="margin: auto;margin: 4em; padding: 4em;">
+         <h3>
+         Your wishlist is empty!!!
+      </h3> 
+      <h3><a [routerLink]="['/home']">Keep adding your liked products</a> </h3>
+   </mat-card>
       </div>
-    </div>
+
+
+      <ng-template #showElse>
+   <div style="padding-bottom: 12em;">
+      <div style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
+  
+      <div style="float: left;"> 
+         <div *ngIf="items==1; else elseItem"> My Wishlist({{items}} Item)</div>
+         <ng-template #elseItem>
+           <div > My Wishlist({{items}} Items)</div>
+         </ng-template>
+     
+       </div>
+      </div>
+       <div *ngFor="let wishlist of wishListItem | keyvalue" style="margin-bottom: 3em;">
+         <mat-card style="margin-bottom: 1em;width: 500px; height: 150px; float: left; margin-left: 10em;padding-bottom: 3em;">
+          <div >
+         
+               <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >      
+            
+           
+          &nbsp;&nbsp; <p style="margin-top: 0.5em;"> Price : {{wishlist.key.Price}}</p>
+            
+           <div style="margin-top: 0.4em;">
+            <button mat-raised-button class="buttonL" (click)="remove(wishlist.key)" >Remove</button> &nbsp;
+            <button mat-raised-button class="buttonL" (click)="moveTocart(wishlist.key)">Move to Cart</button>
+         </div>
+       </div>
+         </mat-card>
+       </div>
+       </div>
+      </ng-template>
     
-    </div>
-   </ng-template>
-    </mat-card>
-    
+       

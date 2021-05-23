@@ -9,6 +9,7 @@ export class DataserviceService {
    wishList =new Map();
    cartCount =0;
    wishCount=0;
+   totalAmount=0;
    cartDetails=[this.cartList,this.cartCount] ;
    wishDetails=[this.wishList,this.wishCount] ;
   private messageSource = new BehaviorSubject('LoggedOut');
@@ -21,6 +22,15 @@ export class DataserviceService {
   currentwishList = this.wishListItem.asObservable(); 
 
   constructor() { }
+  getTotalAmount(cartitem:any){
+    this.totalAmount=0;
+    for (let entry of cartitem.entries()) {
+      this.totalAmount=this.totalAmount+entry[0].Price*entry[1];
+        // console.log(this.totalAmount);
+  }
+  return this.totalAmount;
+  
+  }
 
   changeMessage(username: string) {
     this.messageSource.next(username) 

@@ -8,3 +8,24 @@
     align-content: left;  
     background-size: 500px, 400px;    
 } 
+
+.buttonL{
+    color:black;
+    /* top: 15px;
+    height :7em; */
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+    /* background-color: rgb(236, 142, 173); */
+margin-right: 1em; 
+  }
+  .buttonR{
+    color:black;
+    /* top: 15px;
+    height :7em; */
+    margin-top: 10px;
+    height: 35px;
+    width: 200px;
+    /* background-color: rgb(236, 142, 173); */
+
+  }
