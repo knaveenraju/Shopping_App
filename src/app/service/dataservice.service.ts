@@ -7,14 +7,17 @@ import { BehaviorSubject } from 'rxjs';
 export class DataserviceService {
    cartList =new Map();
    wishList =new Map();
-   cartCount : any;
+   cartCount =0;
+   wishCount=0;
+   cartDetails=[this.cartList,this.cartCount] ;
+   wishDetails=[this.wishList,this.wishCount] ;
   private messageSource = new BehaviorSubject('LoggedOut');
   currentMessage = this.messageSource.asObservable();
  
-  private cartItem = new BehaviorSubject(this.cartList);
+  private cartItem = new BehaviorSubject(this.cartDetails);
   currentItem = this.cartItem.asObservable(); 
 
-  private wishListItem = new BehaviorSubject(this.wishList);
+  private wishListItem = new BehaviorSubject(this.wishDetails);
   currentwishList = this.wishListItem.asObservable(); 
 
   constructor() { }
@@ -24,24 +27,22 @@ export class DataserviceService {
   }
 
   AddtoCart(cartitem:any){
-   
-    this.cartList.set(cartitem,1);
     for (let value of this.cartList.values()) {
-      this.cartCount=value;
+      this.cartCount=this.cartCount+value;
   }
- 
-    this.cartItem.next(this.cartList);
-    //console.log(this.cartList)
-     
+        this.cartDetails=[this.cartList,this.cartCount];
+   
+         this.cartCount=0;
+    this.cartItem.next(this.cartDetails);
   }
-
   AddtoWishlist(wishListItem:any){
-   
-    this.wishList.set(wishListItem,1);
-   
-    
-    this.wishListItem.next(this.wishList);
-     
+    for (let value of this.wishList.values()) {
+      this.wishCount=this.wishCount+value;
+  }
+        this.wishDetails=[this.wishList,this.wishCount];
+      
+         this.wishCount=0;
+    this.wishListItem.next(this.wishDetails);
   }
 
 }

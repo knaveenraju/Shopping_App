@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ProductsComponent implements OnChanges,OnInit{
 
   images:any[];    
-  filterBy?: string = 'all'    
+  filterBy?: string = 'all'     
  allImages:any[] = [];  
 
    constructor(private imageService: ImagesService,  private route :ActivatedRoute , private router :Router) {    

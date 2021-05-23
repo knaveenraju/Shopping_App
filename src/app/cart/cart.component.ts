@@ -14,19 +14,27 @@ export class CartComponent implements OnInit {
   isCartEmpty=true;
   cartItem = new Map();
   wishListItem = new Map();
+  cartDetails=[];
+  wishDetails=[];
   count:any;
+  totalAmount=0;
   constructor( private data : DataserviceService, private router : Router){}
 
 remove(item:any){
   if(this.cartItem.has(item)){
     this.cartItem.delete(item);
   }
-
+  this.data.AddtoCart(this.cartItem);
 }
 
 add(item:any){
-  this.count=this.cartItem.get(item);
-  this.cartItem.set(item,this.count+1)
+   if(this.cartItem.has(item)){
+    this.count=this.cartItem.get(item);
+    // this.cartItem.delete(item);
+     this.cartItem.set(item,this.count+1)
+    
+}
+  this.data.AddtoCart(this.cartItem);
 }
 
 sub(item:any){
@@ -37,6 +45,8 @@ sub(item:any){
   else{
   this.cartItem.set(item,this.count-1)
 }
+this.data.AddtoCart(this.cartItem);
+
 }
 
 moveToWishlist(item:any){
@@ -46,33 +56,40 @@ moveToWishlist(item:any){
     this.router.navigate(['/login']);
   }
   else{
-    this.data.AddtoWishlist(item);
+    this.wishListItem.set(item,1);  
+  
+    this.data.AddtoWishlist(this.cartItem);
     this.cartItem.delete(item); 
+    this.data.AddtoCart(this.cartItem);
   }
 }
 
 
-updateQuantity(item:any ,num:any){
-console.log(num)
 
-}
 
 ngDoCheck(){
- 
+  this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
+  this.cartItem=this.cartDetails[0];
+  this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
+  this.wishListItem=this.wishDetails[0];
+  
   if(this.cartItem.size==0){
     this.isCartEmpty=true;
   }
   else{
     this.isCartEmpty=false;
   }
+
+  for (let entry of this.cartItem.entries()) {
+    this.totalAmount=this.totalAmount+entry[0].Price*entry[1];
+      console.log(this.totalAmount);
+}
  
 }
 
   ngOnInit(): void {
     this.data.currentMessage.subscribe(username => this.username=username)
-    this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
-    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
-    
+  
   //  console.log(this.cartItem)
     
 }

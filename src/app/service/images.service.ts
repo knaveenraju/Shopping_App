@@ -11,7 +11,7 @@ export class ImagesService {
     
     getImages() {    
         return this.allImages = Imagesdetails.slice(0);    
-    }    
+    }     
     
     getImage(id: number) {    
         return Imagesdetails.slice(0).find(Images => Images.id == id)    

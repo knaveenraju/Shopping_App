@@ -13,15 +13,22 @@ export class ProductDetailsComponent implements OnInit{
   details:any    
     SelectedID:any;
     price:any;
-     cartList = new Map();
+    cartItem = new Map();
      username;
      wishList = new Map();
-  
+     cartDetails=[];
+     wishDetails=[];
+
      @Output() messageEvent = new EventEmitter<any>();
   constructor(private imageService: ImagesService,    
     private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
  
-
+    ngDoCheck(){
+      this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
+      this.cartItem=this.cartDetails[0];
+      this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
+      this.wishList=this.wishDetails[0];
+    }
   
   ngOnInit(){    
     this.details = this.imageService.getImage(    
@@ -35,16 +42,14 @@ export class ProductDetailsComponent implements OnInit{
   }
   
   addtoCart(){
-  
-    //console.log(this.details);
-    
-   this.cartList.set(this.details,1);
-    this.data.AddtoCart(this.details);
-   
-   
+    if(this.cartItem.has(this.details)){
+      alert("This product already added to your cart")
+}
+else{
+ this.cartItem.set(this.details,1);  
+ this.data.AddtoCart(this.cartItem);
+} 
   }
-
- 
 
   addtoWishList(){
     if (this.username=="LoggedOut"){
@@ -52,8 +57,14 @@ export class ProductDetailsComponent implements OnInit{
       this.router.navigate(['/login']);
     }
     else{
-    
-    this.data.AddtoWishlist(this.details);
+
+    if(this.wishList.has(this.details)){
+      alert("This product already added to your cart")
+}
+else{
+ this.wishList.set(this.details,1);  
+ this.data.AddtoWishlist(this.wishList);
+} 
     }
   }
   

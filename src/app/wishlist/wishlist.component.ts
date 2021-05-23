@@ -6,10 +6,13 @@ import { DataserviceService } from '../service/dataservice.service';
   templateUrl: './wishlist.component.html',
   styleUrls: ['./wishlist.component.css']
 })
-export class WishlistComponent implements OnInit {
+export class WishlistComponent implements OnInit  {
    username;
-   wishListItem = new Map();
+   cartItem = new Map();
+  wishListItem = new Map();
+  cartDetails=[];
    isWishlistEmpty=true;
+   wishDetails=[];
   constructor(private data : DataserviceService) { }
 
   ngDoCheck(){
@@ -26,7 +29,10 @@ export class WishlistComponent implements OnInit {
   ngOnInit(): void {
 
     this.data.currentMessage.subscribe(username => this.username=username)
-    this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
+    this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
+  this.cartItem=this.cartDetails[0];
+    this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
+    this.wishListItem=this.wishDetails[0];
   
   }
 
@@ -34,14 +40,19 @@ export class WishlistComponent implements OnInit {
     if(this.wishListItem.has(item)){
       this.wishListItem.delete(item);
     }
-  
+    this.data.AddtoWishlist(this.wishListItem);
   }
   
   moveTocart(item:any){
-    console.log(item);
-      this.data.AddtoCart(item);
+   
+   if (!this.cartItem.has(item)){
+    this.cartItem.set(item,1);  
+    this.data.AddtoCart(this.cartItem);
+   }
+   
+     
       this.wishListItem.delete(item); 
-  
+      this.data.AddtoWishlist(this.wishListItem)
   }
   
 

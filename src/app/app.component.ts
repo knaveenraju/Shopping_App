@@ -17,7 +17,8 @@ export class AppComponent implements OnInit  {
   username:string;
     wishlist =0;
   cart=0;
-
+  cartDetails=[];
+  wishDetails=[];
   cartItem = new Map();
   wishListItem = new Map();
  
@@ -36,8 +37,9 @@ export class AppComponent implements OnInit  {
   }
 
 ngDoCheck(){
-  this.data.currentItem.subscribe(cartItem => this.cartItem = cartItem);
-    this.cart=this.cartItem.size;
+  this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
+  this.cartItem=this.cartDetails[0];
+    this.cart=this.cartDetails[1];
 
 
     
@@ -45,9 +47,9 @@ ngDoCheck(){
 this.wishlist=0;
     }
 else{
-  this.data.currentwishList.subscribe(wishListItem => this.wishListItem = wishListItem);
-  this.wishlist=this.wishListItem.size;
-  console.log(this.wishListItem)
+  this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
+ this.wishListItem=this.wishDetails[0];
+ this.wishlist=this.wishDetails[1];
 
 }
 }
