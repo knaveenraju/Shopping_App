@@ -1,8 +1,10 @@
+import { NotificationService } from './../service/notification.service';
 import { Component, OnChanges, OnInit,Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from '../service/dataservice.service';
 
 import { ImagesService } from '../service/images.service';
+
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +22,7 @@ export class ProductDetailsComponent implements OnInit{
      wishDetails=[];
 
      @Output() messageEvent = new EventEmitter<any>();
-  constructor(private imageService: ImagesService,    
+  constructor(private imageService: ImagesService,  private notification :NotificationService,  
     private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
  
     ngDoCheck(){
@@ -29,7 +31,7 @@ export class ProductDetailsComponent implements OnInit{
       this.data.currentwishList.subscribe(wishDetails => this.wishDetails = wishDetails);
       this.wishList=this.wishDetails[0];
     }
-  
+   
   ngOnInit(){    
     this.details = this.imageService.getImage(    
       this.route.snapshot.params['id']    
@@ -43,9 +45,12 @@ export class ProductDetailsComponent implements OnInit{
   
   addtoCart(){
     if(this.cartItem.has(this.details)){
-      alert("This product already added to your cart")
+      this.notification.showInfo("","This product already added to your cart")
+    
+     
 }
 else{
+  this.notification.showSuccess("", "Item added to cart")
  this.cartItem.set(this.details,1);  
  this.data.AddtoCart(this.cartItem);
 } 
@@ -53,15 +58,18 @@ else{
 
   addtoWishList(){
     if (this.username=="LoggedOut"){
-      alert("Login to add parts to your Wishlist")
+      this.notification.showInfo("","Login to add parts to your Wishlist");
+    //  alert("Login to add parts to your Wishlist")
       this.router.navigate(['/login']);
     }
     else{
 
     if(this.wishList.has(this.details)){
-      alert("This product already added to your wishlist")
+      this.notification.showInfo("","This product already added to your wishlist")
+    
 }
 else{
+  this.notification.showSuccess("",  "Item added to wishlist")
  this.wishList.set(this.details,1);  
  this.data.AddtoWishlist(this.wishList);
 } 

@@ -77,7 +77,7 @@
             <div class="IconsContainer">
               <span class="iconCart"> <button mat-icon-button [routerLink]="['/cart']">
               <div *ngIf="cart>0; else elseCart" style="margin-top: 0.7em;">
-                <mat-icon  matBadge="{{cart}}" >shopping_cart</mat-icon>
+                <mat-icon   matBadge="{{cart}}" >shopping_cart</mat-icon>
               </div>
               <ng-template #elseCart>
                 <mat-icon>shopping_cart</mat-icon>
@@ -116,20 +116,20 @@
           <a style="text-decoration: none;color: black;" routerLink="/products" >Home & Livings</a><br/>
           <a style="text-decoration: none;color: black;" routerLink="/products" >Essentials</a><br/>
 
-         </div>
+         </div> 
           
          <div style="  float:left;  width: 25%;">
           <p style="font-weight: 500; font-size: medium; color: black;">
            Useful Links
           </p>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Contact us</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >FAQ</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >T&C</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Tearms of use</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Track Order</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Shipping</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Cancellation</a><br/>
-          <a style="text-decoration: none;color: black;" routerLink="/" >Return</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Contact us</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >FAQ</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >T&C</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Tearms of use</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Track Order</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Shipping</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Cancellation</a><br/>
+          <a style="text-decoration: none;color: black;" routerLink="/home" >Return</a><br/>
          </div>
 
          <div style=" float:left;  width: 25%;">
@@ -147,7 +147,7 @@
         </div>
         <div style=" float:right;  width: 11%;">
          <div>    <p style="font-weight: 500; font-size: medium; color: black;">Keep in Touch</p>
-          <a> <img style="margin-right: 10px; height: 18px;"
+          <a > <img style="margin-right: 10px; height: 18px;"
            src="assets/images/facebook.png"> </a>
          <a> <img style="margin-right: 10px; height: 18px;"
            src="assets/images/twitter.png"> </a>

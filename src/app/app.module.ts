@@ -14,7 +14,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ImagesService } from './service/images.service';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [FilterimagesPipe,ImagesService],
   bootstrap: [ AppComponent]

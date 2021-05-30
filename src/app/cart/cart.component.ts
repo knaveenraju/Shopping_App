@@ -1,3 +1,4 @@
+import { NotificationService } from './../service/notification.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -19,7 +20,8 @@ export class CartComponent implements OnInit {
   count:any;
   totalAmount=0;
   items=0;
-  constructor( private data : DataserviceService, private router : Router){}
+  constructor( private data : DataserviceService, private notification:NotificationService,
+    private router : Router){}
 
 remove(item:any){
   if(this.cartItem.has(item)){
