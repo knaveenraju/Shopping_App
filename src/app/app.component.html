@@ -46,7 +46,7 @@
                <ng-template #user>
                 <button mat-menu-item style="width: 13em;">{{username}}</button>
               </ng-template>
-              <button mat-menu-item [routerLink]="['']">Wishlist</button>
+              <button mat-menu-item [routerLink]="['/wishlist']">Wishlist</button>
               <button mat-menu-item [routerLink]="['']">Orders</button>
               <button mat-menu-item [routerLink]="['']">Saved Addresses</button>
               <button *ngIf="username=='LoggedOut'; else logout" mat-menu-item >Register</button>
