@@ -24,9 +24,8 @@ export class ProductsComponent implements OnChanges,OnInit{
     this.filterBy=this.route.snapshot.paramMap.get('category');
     //console.log(this.filterBy +"docheck");
   }
-  
+   
   ngOnInit(): void {
-    //    this.filterBy=this.route.snapshot.paramMap.get('category');
-    // console.log(this.filterBy);
+ 
   }
 } 
