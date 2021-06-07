@@ -13,6 +13,7 @@ export class DataserviceService {
    totalAmount=0;
    cartDetails=[this.cartList,this.cartCount] ;
    wishDetails=[this.wishList,this.wishCount] ;
+
   private messageSource = new BehaviorSubject('LoggedOut');
   currentMessage = this.messageSource.asObservable();
  
@@ -23,6 +24,7 @@ export class DataserviceService {
   currentwishList = this.wishListItem.asObservable(); 
 
   constructor() { }
+
   getTotalAmount(cartitem:any){
     this.totalAmount=0;
     for (let entry of cartitem.entries()) {
@@ -38,10 +40,11 @@ export class DataserviceService {
   }
 
   AddtoCart(cartitem:any){
+   
     for (let value of this.cartList.values()) {
       this.cartCount=this.cartCount+value;
   }
-        this.cartDetails=[this.cartList,this.cartCount];
+        this.cartDetails=[cartitem,this.cartCount];
    
          this.cartCount=0;
     this.cartItem.next(this.cartDetails);
@@ -50,7 +53,7 @@ export class DataserviceService {
     for (let value of this.wishList.values()) {
       this.wishCount=this.wishCount+value;
   }
-        this.wishDetails=[this.wishList,this.wishCount];
+        this.wishDetails=[wishListItem,this.wishCount];
       
          this.wishCount=0;
     this.wishListItem.next(this.wishDetails);

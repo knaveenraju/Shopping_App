@@ -30,7 +30,7 @@ export class WishlistComponent implements OnInit  {
    
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
     this.data.currentMessage.subscribe(username => this.username=username)
     this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);

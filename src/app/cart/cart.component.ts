@@ -61,7 +61,7 @@ moveToWishlist(item:any){
   else{
     this.wishListItem.set(item,1);  
   
-    this.data.AddtoWishlist(this.cartItem);
+    this.data.AddtoWishlist(this.wishListItem);
     this.cartItem.delete(item); 
     this.data.AddtoCart(this.cartItem);
   }

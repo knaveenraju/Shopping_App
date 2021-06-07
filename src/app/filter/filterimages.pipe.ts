@@ -11,5 +11,5 @@ export class FilterimagesPipe implements PipeTransform {
       return item.type === category;    
     });    
   }    
-    
+     
 }
