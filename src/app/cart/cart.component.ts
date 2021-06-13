@@ -55,7 +55,7 @@ this.data.AddtoCart(this.cartItem);
 moveToWishlist(item:any){
   console.log(item);
   if (this.username=="LoggedOut"){
-    alert("Login to add parts to your Wishlist")
+    this.notification.showInfo("","Login to add parts to your Wishlist");
     this.router.navigate(['/login']);
   }
   else{

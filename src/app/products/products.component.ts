@@ -22,10 +22,26 @@ export class ProductsComponent implements OnChanges,OnInit{
  
   ngDoCheck(){
     this.filterBy=this.route.snapshot.paramMap.get('category');
-    //console.log(this.filterBy +"docheck");
+   
+  
+    if(this.filterBy.match('women') || this.filterBy.match('girl') || this.filterBy.match('ladies') ){
+      this.filterBy="womens"
+    }
+   else if(this.filterBy.match('men') || this.filterBy.match('boy')  ){
+      this.filterBy="mens"
+    }
+    else if(this.filterBy.match('kid') || this.filterBy.match('babies')  ){
+      this.filterBy="kids"
+    }
+    else if(this.filterBy.match('all')   ){
+      this.filterBy="all"
+    }
+    else{
+     this.router.navigate(['/home']);
+    }
   }
    
   ngOnInit(): void {
  
   }
-} 
+}  

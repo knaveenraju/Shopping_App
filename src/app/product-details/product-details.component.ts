@@ -59,7 +59,7 @@ else{
   addtoWishList(){
     if (this.username=="LoggedOut"){
       this.notification.showInfo("","Login to add parts to your Wishlist");
-    //  alert("Login to add parts to your Wishlist")
+    
       this.router.navigate(['/login']);
     }
     else{

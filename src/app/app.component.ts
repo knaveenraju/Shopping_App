@@ -29,6 +29,7 @@ export class AppComponent implements OnInit  {
   onSearch(){
     
  this.router.navigate(['/products',this.searchValue]);
+ this.searchValue='';
  //console.log(this.searchValue);
   }
 

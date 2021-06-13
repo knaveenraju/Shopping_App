@@ -15,6 +15,7 @@ import { ImagesService } from './service/images.service';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ToastrModule } from 'ngx-toastr';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ToastrModule } from 'ngx-toastr';
     FilterimagesPipe,
     CartComponent,
     WishlistComponent,
+    PageNotFoundComponent,
     
   ],
   imports: [
