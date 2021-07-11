@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataserviceService } from '../service/dataservice.service';
 
 import { ImagesService } from '../service/images.service';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../login/auth.service';
 
 
 @Component({
@@ -20,10 +22,13 @@ export class ProductDetailsComponent implements OnInit{
      wishList = new Map();
      cartDetails=[];
      wishDetails=[];
-
+     user:any;
+     private usersub: Subscription;
+     isUserAuthenticated=false;
      @Output() messageEvent = new EventEmitter<any>();
   constructor(private imageService: ImagesService,  private notification :NotificationService,  
-    private route: ActivatedRoute,private data: DataserviceService, private router : Router) { }    
+    private route: ActivatedRoute,private data: DataserviceService, private router : Router,
+    private LoginService : AuthService) { }    
  
     ngDoCheck(){
       this.data.currentItem.subscribe(cartDetails => this.cartDetails = cartDetails);
@@ -39,7 +44,12 @@ export class ProductDetailsComponent implements OnInit{
     )   
     this.SelectedID= this.route.snapshot.params['id'];
 
-    this.data.currentMessage.subscribe(username => this.username = username)
+    // this.data.currentMessage.subscribe(username => this.username = username)
+
+    this.usersub=this.LoginService.user.subscribe(user => {
+      this.isUserAuthenticated = !user ? false : true; 
+     this.user=user;});
+     console.log(this.isUserAuthenticated);
   
   }
   
@@ -57,13 +67,14 @@ else{
   }
 
   addtoWishList(){
-    if (this.username=="LoggedOut"){
+    // if (this.username=="LoggedOut"){
+      if(this.isUserAuthenticated ==false){
       this.notification.showInfo("","Login to add parts to your Wishlist");
     
       this.router.navigate(['/login']);
     }
     else{
-
+ 
     if(this.wishList.has(this.details)){
       this.notification.showInfo("","This product already added to your wishlist")
     

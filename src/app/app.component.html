@@ -42,17 +42,20 @@
             <span class="userTitle">Profile</span>
 
             <mat-menu #animals="matMenu">
-               <button *ngIf="username=='LoggedOut'; else user" mat-menu-item [routerLink]="['login']" style="width: 13em;">Login</button>
-               <ng-template #user>
-                <button mat-menu-item style="width: 13em;">{{username}}</button>
-              </ng-template>
+              <div *ngIf="isUserAuthenticated"> 
+               <p mat-menu-item> Hello {{user.email}} </p>
+              </div>
               <button mat-menu-item [routerLink]="['/wishlist']">Wishlist</button>
               <button mat-menu-item [routerLink]="['']">Orders</button>
               <button mat-menu-item [routerLink]="['']">Saved Addresses</button>
-              <button *ngIf="username=='LoggedOut'; else logout" mat-menu-item >Register</button>
-               <ng-template #logout>
-                <button mat-menu-item (click)="logOut()" [routerLink]="['home']">Log Out</button>
-              </ng-template>
+              <button *ngIf="!isUserAuthenticated; else logout" mat-menu-item [routerLink]="['login']" style="width: 13em;">Login | Register</button>
+              <ng-template #logout>
+                <button mat-menu-item (click)="logOut()" [routerLink]="['login']">Log Out</button>
+             </ng-template>
+              <!-- <button *ngIf="username=='LoggedOut'; else logout" mat-menu-item >Register</button>
+               <ng-template #logout> -->
+                
+              <!-- </ng-template> -->
             </mat-menu>
 
           </div>

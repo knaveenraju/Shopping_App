@@ -7,24 +7,27 @@
       </h3> 
       <h3><a [routerLink]="['/home']">Keep adding your liked products</a> </h3>
    </mat-card>
-      </div>
+      </div> 
 
 
       <ng-template #showElse>
-   <div style="padding-bottom: 12em;">
-      <mat-card style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
+   <div style="padding-bottom: 22em;">
+      <mat-card style="width: 500px; height: 5px; float: left; 
+      margin-left: 10em;padding-bottom: 2em;">
   
       <div style="float: left;"> 
          <div *ngIf="items==1; else elseItem"> My Wishlist({{items}} Item)</div>
          <ng-template #elseItem>
-           <div > My Wishlist({{items}} Items)</div>
+           <div > My Wishlist</div>
          </ng-template>
      
        </div>
+       <div style="float: right;">{{items}} Items</div>
       </mat-card>
       
        <div *ngFor="let wishlist of wishListItem | keyvalue" style="margin-bottom: 3em;">
-         <mat-card style="margin-bottom: 1em;width: 500px; height: 150px; float: left; margin-left: 10em;padding-bottom: 3em;">
+         <mat-card style="margin-bottom: 3em; margin-top: 1em;width: 500px; height: 150px; 
+         float: left; margin-left: 10em;padding-bottom: 3em;">
           <div >
             <a [routerLink]="['/image', wishlist.key.id]">
                <img src=" {{wishlist.key.url}}" class="img" width="150" height="90" >      

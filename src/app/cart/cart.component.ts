@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { DataserviceService } from '../service/dataservice.service';
+import { AuthService } from '../login/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -18,10 +20,14 @@ export class CartComponent implements OnInit {
   cartDetails=[];
   wishDetails=[];
   count:any;
+ 
   totalAmount=0;
   items=0;
+  user:any;
+  private usersub: Subscription;
+  isUserAuthenticated=false;
   constructor( private data : DataserviceService, private notification:NotificationService,
-    private router : Router){}
+    private router : Router,private LoginService : AuthService){}
 
 remove(item:any){
   if(this.cartItem.has(item)){
@@ -53,8 +59,9 @@ this.data.AddtoCart(this.cartItem);
 }
 
 moveToWishlist(item:any){
-  console.log(item);
-  if (this.username=="LoggedOut"){
+  console.log(this.isUserAuthenticated);
+  // if (this.username=="LoggedOut"){
+    if (this.isUserAuthenticated==false){
     this.notification.showInfo("","Login to add parts to your Wishlist");
     this.router.navigate(['/login']);
   }
@@ -90,7 +97,13 @@ ngDoCheck(){
 }
 
   ngOnInit(): void {
-    this.data.currentMessage.subscribe(username => this.username=username)
+
+    this.usersub=this.LoginService.user.subscribe(user => {
+      this.isUserAuthenticated = !user ? false : true; 
+     this.user=user;});
+     console.log(this.isUserAuthenticated);
+    
+    // this.data.currentMessage.subscribe(username => this.username=username)
   
   //  console.log(this.cartItem)
     

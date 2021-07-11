@@ -13,9 +13,10 @@
 
  
 <ng-template #showElse>
-  <div style="padding-bottom: 12em;">
+  <div style="padding-bottom: 22em;">
 
-    <mat-card style="margin-bottom: 2em;width: 500px; height: 5px; float: left; margin-left: 10em;padding-bottom: 2em;">
+    <mat-card style="width: 500px; height: 5px; float: left;
+     margin-left: 10em;padding-bottom: 2em;">
     <div style="float: left;"> 
       <div *ngIf="items==1; else elseItem"> My Shopping Bag({{items}} Item)</div>
       <ng-template #elseItem>
@@ -27,8 +28,9 @@
     </mat-card>
 
   <div *ngFor="let cart of cartItem | keyvalue" style="float: left;">
-    <mat-card style="margin-bottom: 2em;width: 500px; height: 150px;  margin-left: 10em;padding-bottom: 3em;">
-     <div style="padding-bottom: 3em;">
+    <mat-card style="margin-bottom: 3em; margin-top: 1em;width: 500px; height: 150px;  
+    margin-left: 10em;padding-bottom: 3em;">
+     <div style="padding-bottom: 2em;">
     <div>
       <a [routerLink]="['/image', cart.key.id]">
           <img src=" {{cart.key.url}}" class="img" width="150" height="90" >    <br>
@@ -47,7 +49,7 @@
    </span>
         </div>
         <div>
-         
+          
       <button mat-raised-button class="buttonL" (click)="remove(cart.key)" >Remove</button> &nbsp;
       <button mat-raised-button class="buttonL"(click)="moveToWishlist(cart.key)">Move to Wishlist</button>
       </div>
