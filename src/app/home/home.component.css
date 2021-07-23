@@ -8,8 +8,8 @@
 .example-card-cart{
     background-color:whitesmoke;
     float: left;
-    height: 13em;
-    width: 12em;
+    height: 15em;
+    width: 14em;
     margin-bottom: 4em;
     margin-right: 2em;
 }
@@ -20,8 +20,8 @@
 .example-card-cart1{
     background-color:whitesmoke;
     float: left;
-    height: 13em;
-    width: 12em;
+    height: 15em;
+    width: 14em;
     margin-bottom: 4em;
   
 }
@@ -31,7 +31,7 @@
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 2em;
-    height: 35em;
+    height: 38em;
        background-color: white;
       margin-bottom: auto;
       max-width: 1120px;
@@ -43,8 +43,8 @@
 .example-card-brand{
     background-color:whitesmoke;
     float: left;
-    height: 14em;
-    width: 12em;
+    height: 16em;
+    width: 14em;
     margin-bottom: 4em;
     margin-right: 2em;
 }
@@ -57,8 +57,8 @@
 .example-card-brand1{
     background-color:whitesmoke;
     float: left;
-    height: 14em;
-    width: 12em;
+    height: 16em;
+    width: 14em;
     margin-bottom: 4em;
   
 }
@@ -68,7 +68,7 @@
     padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 2em;
-    height: 36em;
+    height: 40em;
        background-color: white;
       margin-bottom: auto;
       max-width: 1120px;
@@ -80,10 +80,10 @@
 
 .foot-brand2{
     padding-top: 2em;
-    padding-left: 2em;
+    padding-left: 1em;
     padding-right: 1em;
     padding-bottom: 2em;
-    height: 16em;
+    height: 20em;
        background-color: white;
       margin-bottom: auto;
       max-width: 1120px;
@@ -91,5 +91,6 @@
    
      
 }
+
 
 

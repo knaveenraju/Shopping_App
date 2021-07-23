@@ -20,25 +20,17 @@
 }
 
 
-.products{
-  background-color:whitesmoke;
-  float: left;
-  height: 13em;
-  width: 12em;
-  margin-bottom: 4em;
-}
 
 .foot-cart1{
-  padding-top: 2em;
-  padding-left: 1em;
-  padding-right: 1em;
-  padding-bottom: 2em;
+  padding-top: 1em;
+
+
   height: auto;
      background-color: white;
     margin-bottom: auto;
     max-width: 1120px;
     margin: auto;
-    padding-bottom: 5em;
+    padding-bottom: 1em;
 
  
    

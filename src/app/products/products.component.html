@@ -25,12 +25,12 @@ Filters
     </div>   
 </mat-card> -->
      
-<div > 
-    <div class="row">     
+
+    <div >     
       <ul>    
         <li *ngFor="let img of (allImages | filterimages:filterBy)">    
-          <a [routerLink]="['/image', img.id]" style="margin-right: 1.5em; margin-bottom: 1.5em;">  
-            <img src="{{img.url}}" class="img" width="240" height="170" >                 
+          <a [routerLink]="['/image', img.id]" style="margin-right: 1em; margin-bottom: 2em;">  
+            <img src="{{img.url}}" class="img" width="220" height="170" >                 
           </a>   
 
             
@@ -38,6 +38,6 @@ Filters
         </li>    
       </ul>    
     </div>    
-  </div>
+
   
 </div>
